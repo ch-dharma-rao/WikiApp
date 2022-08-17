@@ -5,8 +5,9 @@
       <map>
         <entry key="..\:/Users/Asus/Desktop/AndroidStudioProjects/WikiApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/Asus/Desktop/AndroidStudioProjects/WikiApp/app/src/main/res/layout/fragment_articles.xml" value="0.1" />
-        <entry key="..\:/Users/Asus/Desktop/AndroidStudioProjects/WikiApp/app/src/main/res/layout/fragment_categories.xml" value="0.1" />
+        <entry key="..\:/Users/Asus/Desktop/AndroidStudioProjects/WikiApp/app/src/main/res/layout/fragment_categories.xml" value="0.536" />
         <entry key="..\:/Users/Asus/Desktop/AndroidStudioProjects/WikiApp/app/src/main/res/layout/fragment_pictures.xml" value="0.1" />
+        <entry key="..\:/Users/Asus/Desktop/AndroidStudioProjects/WikiApp/app/src/main/res/layout/item_view_category.xml" value="0.253125" />
       </map>
     </option>
   </component>

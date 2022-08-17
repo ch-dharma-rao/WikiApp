@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager.widget.ViewPager
 import com.example.wikiapp.adapters.ViewPageAdapter
+import com.example.wikiapp.repository.CategoyRepository
 import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity() {
@@ -14,6 +15,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        var categoryRepository: CategoyRepository? =  (application as WikiApplication).categoyRepository
 
 
         tabLayout = findViewById<TabLayout>(R.id.tabLayout)
