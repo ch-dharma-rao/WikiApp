@@ -25,7 +25,8 @@ class ViewPageAdapter(fm: FragmentManager, private val numofTabs: Int) : Fragmen
                 return CategoriesFragment()
             }
             else -> return ArticlesFragment()
-        }      }
+        }
+    }
 
     override fun getPageTitle(position: Int): CharSequence? {
         var title: String? = null

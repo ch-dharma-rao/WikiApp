@@ -6,7 +6,7 @@ import com.example.wikiapp.repository.CategoyRepository
 
 class WikiApplication : Application() {
 
-    lateinit var  categoyRepository: CategoyRepository
+    lateinit var categoyRepository: CategoyRepository
 
     override fun onCreate() {
         super.onCreate()
@@ -15,6 +15,6 @@ class WikiApplication : Application() {
 
     private fun intialize() {
         val database = CategoryDatabase.getDatabase(applicationContext)
-        categoyRepository = CategoyRepository(database,applicationContext)
+        categoyRepository = CategoyRepository(database, applicationContext)
     }
 }

@@ -9,47 +9,55 @@ import com.example.wikiapp.api.WikiApiService
 import com.example.wikiapp.db.CategoryDatabase
 import com.example.wikiapp.model.Categories
 import com.example.wikiapp.model.Category
-import com.example.wikiapp.model.Query
+import com.example.wikiapp.model.Query3
 import com.example.wikiapp.utils.NetworkUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.runBlocking
 
-class CategoyRepository(private val categoryDatabase: CategoryDatabase, private val applicationContext: Context) {
+class CategoyRepository(
+    private val categoryDatabase: CategoryDatabase,
+    private val applicationContext: Context
+) {
 
     private val wikiApiService by lazy {
-        WikiApiService.create()
+        WikiApiService.create("https://en.wikipedia.org/w/")
     }
 
     private var categoriesLiveData = MutableLiveData<Categories>()
-    val categories :LiveData<Categories>
-    get() = categoriesLiveData
+    val categories: LiveData<Categories>
+        get() = categoriesLiveData
 
     @SuppressLint("CheckResult")
-    suspend fun getCategories(){
-        var  categories: List<Category>
+    suspend fun getCategories() {
+        var categories: List<Category>
 
-        if(NetworkUtils.isInternetAvailable(applicationContext)){
+        if (NetworkUtils.isInternetAvailable(applicationContext)) {
 
-            wikiApiService.getCategories("query", "allcategories","List of" ,"2", "json")
+            wikiApiService.getCategories("query", "allcategories", "List of", "2", "json")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                     { result ->
-                        categories= result.query.allcategories
+                        categories = result.query.allcategories
                         runBlocking {
                             categoryDatabase.categoryDao().addCategories(categories)
                         }
 
                         categoriesLiveData.postValue(result)
 
-                        Log.d("LIST", categoriesLiveData.value?.query?.allcategories.toString())},
-                    { error ->   Log.d("CATEGORY LIST", error.message.toString())
+                        Log.d(
+                            "CAT REPO LIST",
+                            categoriesLiveData.value?.query?.allcategories.toString()
+                        )
+                    },
+                    { error ->
+                        Log.d("CATEGORY LIST", error.message.toString())
                     }
                 )
-        }else{
-             categories = categoryDatabase.categoryDao().getCategories()
-            var categoryList = Categories(Query(categories))
+        } else {
+            categories = categoryDatabase.categoryDao().getCategories()
+            var categoryList = Categories(Query3(categories))
             categoriesLiveData.postValue(categoryList)
         }
 

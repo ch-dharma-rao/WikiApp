@@ -5,10 +5,10 @@ import androidx.room.PrimaryKey
 
 
 data class Categories(
-    val query: Query
+    val query: Query3
 )
 
-data class Query(
+data class Query3(
     val allcategories: List<Category>
 )
 
@@ -18,3 +18,4 @@ data class Category(
     val id: Int,
     val category: String
 )
+

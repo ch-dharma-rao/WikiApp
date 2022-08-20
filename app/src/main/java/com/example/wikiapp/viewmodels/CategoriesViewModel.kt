@@ -11,12 +11,12 @@ import kotlinx.coroutines.launch
 class CategoriesViewModel(private val repository: CategoyRepository) : ViewModel() {
 
     init {
-        viewModelScope.launch(Dispatchers.IO){
+        viewModelScope.launch(Dispatchers.IO) {
             repository.getCategories()
         }
     }
 
-    val categories :LiveData<Categories>
+    val categories: LiveData<Categories>
         get() = repository.categories
 
 

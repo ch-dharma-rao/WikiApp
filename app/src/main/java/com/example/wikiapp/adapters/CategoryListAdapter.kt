@@ -9,11 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wikiapp.R
 import com.example.wikiapp.model.Category
 
-class CategoryListAdapter : ListAdapter<Category, CategoryListAdapter.CategoryViewHolder>(DiffUtil()) {
+class CategoryListAdapter :
+    ListAdapter<Category, CategoryListAdapter.CategoryViewHolder>(DiffUtil()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_view_category,parent,false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_view_category, parent, false)
         return CategoryViewHolder(view)
     }
 
@@ -23,18 +25,18 @@ class CategoryListAdapter : ListAdapter<Category, CategoryListAdapter.CategoryVi
     }
 
 
-    class CategoryViewHolder(view: View) : RecyclerView.ViewHolder(view){
+    class CategoryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val category = view.findViewById<TextView>(R.id.categoryName)
 
-        fun bind(item:Category){
+        fun bind(item: Category) {
             category.text = item.category
         }
     }
 
 
-    class  DiffUtil : androidx.recyclerview.widget.DiffUtil.ItemCallback<Category>(){
+    class DiffUtil : androidx.recyclerview.widget.DiffUtil.ItemCallback<Category>() {
         override fun areItemsTheSame(oldItem: Category, newItem: Category): Boolean {
-            return  oldItem.category == newItem.category
+            return oldItem.category == newItem.category
         }
 
         override fun areContentsTheSame(oldItem: Category, newItem: Category): Boolean {
